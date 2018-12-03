@@ -36,10 +36,10 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 
 NSNumber* lat = 17.24; // Latitude of the location to generate an address for.
 NSNumber* lon = 74.25; // Longitude of the location to generate an address for.
-NSString* format = json; // Format to geocode. Only JSON supported for SDKs
+NSString* format = "json"; // Format to geocode. Only JSON supported for SDKs
 NSNumber* normalizecity = 1; // Normalizes village to city level data to city
 NSNumber* addressdetails = 1; // Include a breakdown of the address into elements. Defaults to 1. (optional) (default to @1)
-NSString* acceptLanguage = en; // Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language=native (optional)
+NSString* acceptLanguage = "en"; // Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language=native (optional)
 NSNumber* namedetails = 0; // Include a list of alternative names in the results. These may include language variants, references, operator and brand. (optional)
 NSNumber* extratags = 0; // Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
 
