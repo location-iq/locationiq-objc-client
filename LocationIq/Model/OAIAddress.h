@@ -29,11 +29,31 @@
 
 @property(nonatomic) NSString* residential;
 
+@property(nonatomic) NSString* borough;
+
+@property(nonatomic) NSString* neighbourhood;
+
+@property(nonatomic) NSString* quarter;
+
+@property(nonatomic) NSString* hamlet;
+
+@property(nonatomic) NSString* suburb;
+
+@property(nonatomic) NSString* island;
+
 @property(nonatomic) NSString* village;
+
+@property(nonatomic) NSString* town;
+
+@property(nonatomic) NSString* city;
+
+@property(nonatomic) NSString* cityDistrict;
 
 @property(nonatomic) NSString* county;
 
 @property(nonatomic) NSString* state;
+
+@property(nonatomic) NSString* stateDistrict;
 
 @property(nonatomic) NSString* postcode;
 
@@ -41,6 +61,6 @@
 
 @property(nonatomic) NSString* countryCode;
 
-@property(nonatomic) NSString* city;
+@property(nonatomic) NSString* stateCode;
 
 @end

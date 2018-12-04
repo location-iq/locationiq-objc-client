@@ -61,7 +61,7 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
 ///
 ///  @param addressdetails Include a breakdown of the address into elements. Defaults to 0. (optional)
 ///
-///  @param viewbox The preferred area to find search results.  To restrict results to those within the viewbox, use along with the bounded option. (optional)
+///  @param viewbox The preferred area to find search results.  To restrict results to those within the viewbox, use along with the bounded option. Tuple of 4 floats. Any two corner points of the box - `max_lon,max_lat,min_lon,min_lat` or `min_lon,min_lat,max_lon,max_lat` - are accepted in any order as long as they span a real box.  (optional)
 ///
 ///  @param bounded Restrict the results to only items contained with the viewbox (optional)
 ///
@@ -77,6 +77,8 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
 ///
 ///  @param extratags Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
 ///
+///  @param statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
+///
 ///  @returns NSArray<OAILocation>*
 ///
 -(NSURLSessionTask*) searchWithQ: (NSString*) q
@@ -91,6 +93,7 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
     namedetails: (NSNumber*) namedetails
     dedupe: (NSNumber*) dedupe
     extratags: (NSNumber*) extratags
+    statecode: (NSNumber*) statecode
     completionHandler: (void (^)(NSArray<OAILocation>* output, NSError* error)) handler {
     // verify the required parameter 'q' is set
     if (q == nil) {
@@ -165,6 +168,9 @@ NSInteger kOAISearchApiMissingParamErrorCode = 234513;
     }
     if (extratags != nil) {
         queryParams[@"extratags"] = extratags;
+    }
+    if (statecode != nil) {
+        queryParams[@"statecode"] = statecode;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];

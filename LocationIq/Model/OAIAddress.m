@@ -17,7 +17,7 @@
  * This method is used by `JSONModel`.
  */
 + (JSONKeyMapper *)keyMapper {
-  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"houseNumber": @"house_number", @"road": @"road", @"residential": @"residential", @"village": @"village", @"county": @"county", @"state": @"state", @"postcode": @"postcode", @"country": @"country", @"countryCode": @"country_code", @"city": @"city" }];
+  return [[JSONKeyMapper alloc] initWithModelToJSONDictionary:@{ @"houseNumber": @"house_number", @"road": @"road", @"residential": @"residential", @"borough": @"borough", @"neighbourhood": @"neighbourhood", @"quarter": @"quarter", @"hamlet": @"hamlet", @"suburb": @"suburb", @"island": @"island", @"village": @"village", @"town": @"town", @"city": @"city", @"cityDistrict": @"city_district", @"county": @"county", @"state": @"state", @"stateDistrict": @"state_district", @"postcode": @"postcode", @"country": @"country", @"countryCode": @"country_code", @"stateCode": @"state_code" }];
 }
 
 /**
@@ -27,7 +27,7 @@
  */
 + (BOOL)propertyIsOptional:(NSString *)propertyName {
 
-  NSArray *optionalProperties = @[@"houseNumber", @"road", @"residential", @"village", @"county", @"state", @"postcode", @"country", @"countryCode", @"city"];
+  NSArray *optionalProperties = @[@"houseNumber", @"road", @"residential", @"borough", @"neighbourhood", @"quarter", @"hamlet", @"suburb", @"island", @"village", @"town", @"city", @"cityDistrict", @"county", @"state", @"stateDistrict", @"postcode", @"country", @"countryCode", @"stateCode"];
   return [optionalProperties containsObject:propertyName];
 }
 

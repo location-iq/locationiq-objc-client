@@ -17,6 +17,7 @@ Method | HTTP request | Description
     acceptLanguage: (NSString*) acceptLanguage
     namedetails: (NSNumber*) namedetails
     extratags: (NSNumber*) extratags
+    statecode: (NSNumber*) statecode
         completionHandler: (void (^)(OAILocation* output, NSError* error)) handler;
 ```
 
@@ -42,6 +43,7 @@ NSNumber* addressdetails = 1; // Include a breakdown of the address into element
 NSString* acceptLanguage = "en"; // Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language=native (optional)
 NSNumber* namedetails = 0; // Include a list of alternative names in the results. These may include language variants, references, operator and brand. (optional)
 NSNumber* extratags = 0; // Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
+NSNumber* statecode = 0; // Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
 
 OAIReverseApi*apiInstance = [[OAIReverseApi alloc] init];
 
@@ -54,6 +56,7 @@ OAIReverseApi*apiInstance = [[OAIReverseApi alloc] init];
               acceptLanguage:acceptLanguage
               namedetails:namedetails
               extratags:extratags
+              statecode:statecode
           completionHandler: ^(OAILocation* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -76,6 +79,7 @@ Name | Type | Description  | Notes
  **acceptLanguage** | **NSString***| Preferred language order for showing search results, overrides the value specified in the Accept-Language HTTP header. Defaults to en. To use native language for the response when available, use accept-language&#x3D;native | [optional] 
  **namedetails** | **NSNumber***| Include a list of alternative names in the results. These may include language variants, references, operator and brand. | [optional] 
  **extratags** | **NSNumber***| Include additional information in the result if available, e.g. wikipedia link, opening hours. | [optional] 
+ **statecode** | **NSNumber***| Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 | [optional] 
 
 ### Return type
 

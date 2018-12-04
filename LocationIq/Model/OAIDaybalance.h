@@ -25,4 +25,6 @@
 
 @property(nonatomic) NSNumber* day;
 
+@property(nonatomic) NSNumber* bonus;
+
 @end

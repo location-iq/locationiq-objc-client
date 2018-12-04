@@ -69,6 +69,8 @@ NSInteger kOAIReverseApiMissingParamErrorCode = 234513;
 ///
 ///  @param extratags Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
 ///
+///  @param statecode Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
+///
 ///  @returns OAILocation*
 ///
 -(NSURLSessionTask*) reverseWithLat: (NSNumber*) lat
@@ -79,6 +81,7 @@ NSInteger kOAIReverseApiMissingParamErrorCode = 234513;
     acceptLanguage: (NSString*) acceptLanguage
     namedetails: (NSNumber*) namedetails
     extratags: (NSNumber*) extratags
+    statecode: (NSNumber*) statecode
     completionHandler: (void (^)(OAILocation* output, NSError* error)) handler {
     // verify the required parameter 'lat' is set
     if (lat == nil) {
@@ -152,6 +155,9 @@ NSInteger kOAIReverseApiMissingParamErrorCode = 234513;
     }
     if (extratags != nil) {
         queryParams[@"extratags"] = extratags;
+    }
+    if (statecode != nil) {
+        queryParams[@"statecode"] = statecode;
     }
     NSMutableDictionary* headerParams = [NSMutableDictionary dictionaryWithDictionary:self.apiClient.configuration.defaultHeaders];
     [headerParams addEntriesFromDictionary:self.defaultHeaders];
