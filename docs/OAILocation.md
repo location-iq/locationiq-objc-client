@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**distance** | **NSNumber*** |  | [optional] 
 **placeId** | **NSString*** |  | [optional] 
 **licence** | **NSString*** |  | [optional] 
 **osmType** | **NSString*** |  | [optional] 
@@ -16,6 +17,7 @@ Name | Type | Description | Notes
 **importance** | **NSNumber*** |  | [optional] 
 **address** | [**OAIAddress***](OAIAddress.md) |  | [optional] 
 **namedetails** | [**OAINamedetails***](OAINamedetails.md) |  | [optional] 
+**matchquality** | [**OAIMatchquality***](OAIMatchquality.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

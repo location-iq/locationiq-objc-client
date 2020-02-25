@@ -22,6 +22,8 @@ Method | HTTP request | Description
     dedupe: (NSNumber*) dedupe
     extratags: (NSNumber*) extratags
     statecode: (NSNumber*) statecode
+    matchquality: (NSNumber*) matchquality
+    postaladdress: (NSNumber*) postaladdress
         completionHandler: (void (^)(NSArray<OAILocation>* output, NSError* error)) handler;
 ```
 
@@ -52,6 +54,8 @@ NSNumber* namedetails = 1; // Include a list of alternative names in the results
 NSNumber* dedupe = 1; // Sometimes you have several objects in OSM identifying the same place or object in reality. The simplest case is a street being split in many different OSM ways due to different characteristics. Nominatim will attempt to detect such duplicates and only return one match; this is controlled by the dedupe parameter which defaults to 1. Since the limit is, for reasons of efficiency, enforced before and not after de-duplicating, it is possible that de-duplicating leaves you with less results than requested. (optional)
 NSNumber* extratags = 0; // Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
 NSNumber* statecode = 0; // Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
+NSNumber* matchquality = 0; // Returns additional information about quality of the result in a matchquality object. Read more Defaults to 0 [0,1] (optional)
+NSNumber* postaladdress = 0; // Returns address inside the postaladdress key, that is specifically formatted for each country. Currently supported for addresses in Germany. Defaults to 0 [0,1] (optional)
 
 OAISearchApi*apiInstance = [[OAISearchApi alloc] init];
 
@@ -69,6 +73,8 @@ OAISearchApi*apiInstance = [[OAISearchApi alloc] init];
               dedupe:dedupe
               extratags:extratags
               statecode:statecode
+              matchquality:matchquality
+              postaladdress:postaladdress
           completionHandler: ^(NSArray<OAILocation>* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -96,6 +102,8 @@ Name | Type | Description  | Notes
  **dedupe** | **NSNumber***| Sometimes you have several objects in OSM identifying the same place or object in reality. The simplest case is a street being split in many different OSM ways due to different characteristics. Nominatim will attempt to detect such duplicates and only return one match; this is controlled by the dedupe parameter which defaults to 1. Since the limit is, for reasons of efficiency, enforced before and not after de-duplicating, it is possible that de-duplicating leaves you with less results than requested. | [optional] 
  **extratags** | **NSNumber***| Include additional information in the result if available, e.g. wikipedia link, opening hours. | [optional] 
  **statecode** | **NSNumber***| Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 | [optional] 
+ **matchquality** | **NSNumber***| Returns additional information about quality of the result in a matchquality object. Read more Defaults to 0 [0,1] | [optional] 
+ **postaladdress** | **NSNumber***| Returns address inside the postaladdress key, that is specifically formatted for each country. Currently supported for addresses in Germany. Defaults to 0 [0,1] | [optional] 
 
 ### Return type
 

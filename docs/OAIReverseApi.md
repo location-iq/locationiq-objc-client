@@ -18,6 +18,8 @@ Method | HTTP request | Description
     namedetails: (NSNumber*) namedetails
     extratags: (NSNumber*) extratags
     statecode: (NSNumber*) statecode
+    showdistance: (NSNumber*) showdistance
+    postaladdress: (NSNumber*) postaladdress
         completionHandler: (void (^)(OAILocation* output, NSError* error)) handler;
 ```
 
@@ -35,8 +37,8 @@ OAIDefaultConfiguration *apiConfig = [OAIDefaultConfiguration sharedConfig];
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"key"];
 
 
-NSNumber* lat = 17.24; // Latitude of the location to generate an address for.
-NSNumber* lon = 74.25; // Longitude of the location to generate an address for.
+NSNumber* lat = 40.7487727; // Latitude of the location to generate an address for.
+NSNumber* lon = -73.9849336; // Longitude of the location to generate an address for.
 NSString* format = "json"; // Format to geocode. Only JSON supported for SDKs
 NSNumber* normalizecity = 1; // Normalizes village to city level data to city
 NSNumber* addressdetails = 1; // Include a breakdown of the address into elements. Defaults to 1. (optional) (default to @1)
@@ -44,6 +46,8 @@ NSString* acceptLanguage = "en"; // Preferred language order for showing search 
 NSNumber* namedetails = 0; // Include a list of alternative names in the results. These may include language variants, references, operator and brand. (optional)
 NSNumber* extratags = 0; // Include additional information in the result if available, e.g. wikipedia link, opening hours. (optional)
 NSNumber* statecode = 0; // Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 (optional)
+NSNumber* showdistance = 0; // Returns the straight line distance (meters) between the input location and the result's location. Value is set in the distance key of the response. Defaults to 0 [0,1] (optional)
+NSNumber* postaladdress = 0; // Returns address inside the postaladdress key, that is specifically formatted for each country. Currently supported for addresses in Germany. Defaults to 0 [0,1] (optional)
 
 OAIReverseApi*apiInstance = [[OAIReverseApi alloc] init];
 
@@ -57,6 +61,8 @@ OAIReverseApi*apiInstance = [[OAIReverseApi alloc] init];
               namedetails:namedetails
               extratags:extratags
               statecode:statecode
+              showdistance:showdistance
+              postaladdress:postaladdress
           completionHandler: ^(OAILocation* output, NSError* error) {
                         if (output) {
                             NSLog(@"%@", output);
@@ -80,6 +86,8 @@ Name | Type | Description  | Notes
  **namedetails** | **NSNumber***| Include a list of alternative names in the results. These may include language variants, references, operator and brand. | [optional] 
  **extratags** | **NSNumber***| Include additional information in the result if available, e.g. wikipedia link, opening hours. | [optional] 
  **statecode** | **NSNumber***| Adds state or province code when available to the statecode key inside the address element. Currently supported for addresses in the USA, Canada and Australia. Defaults to 0 | [optional] 
+ **showdistance** | **NSNumber***| Returns the straight line distance (meters) between the input location and the result&#39;s location. Value is set in the distance key of the response. Defaults to 0 [0,1] | [optional] 
+ **postaladdress** | **NSNumber***| Returns address inside the postaladdress key, that is specifically formatted for each country. Currently supported for addresses in Germany. Defaults to 0 [0,1] | [optional] 
 
 ### Return type
 
